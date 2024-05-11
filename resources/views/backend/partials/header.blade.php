@@ -19,7 +19,7 @@
             <div class="col-lg-7 col-md-7 col-6">
                 <div class="header-right">
                     {{--  notification start  --}}
-                    <div class="notification-box ml-15 d-none d-md-flex">
+                    {{--  <div class="notification-box ml-15 d-none d-md-flex">
                         <button class="dropdown-toggle" type="button" id="notification" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -75,12 +75,12 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div>  --}}
                     {{--  notification end  --}}
 
 
                     {{--  message start  --}}
-                    <div class="header-message-box ml-15 d-none d-md-flex">
+                    {{--  <div class="header-message-box ml-15 d-none d-md-flex">
                         <button class="dropdown-toggle" type="button" id="message" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
@@ -132,7 +132,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </div>
+                    </div>  --}}
                     {{--  message end  --}}
 
 
@@ -163,26 +163,26 @@
                                     <div class="content">
                                         <h4 class="text-sm">Adam Joe</h4>
                                         <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs"
-                                            href="#">Email@gmail.com</a>
+                                            href="{{ route('dashboard') }}">admin@admin.com</a>
                                     </div>
                                 </div>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#0">
-                                    <i class="lni lni-user"></i> View Profile
-                                </a>
+                                <a href="{{ route('profile.setting') }}"><i class="lni lni-user"></i> Profile </a>
                             </li>
-                            <li>
+
+                            {{--  <li>
                                 <a href="#0">
                                     <i class="lni lni-alarm"></i> Notifications
                                 </a>
-                            </li>
-                            <li>
+                            </li>  --}}
+                            {{--  <li>
                                 <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
-                            </li>
+                            </li>  --}}
+
                             <li>
-                                <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+                                <a href="{{ route('system.index') }}"> <i class="lni lni-cog"></i> Settings </a>
                             </li>
                             <li class="divider"></li>
                             <li>
