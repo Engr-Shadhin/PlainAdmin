@@ -107,13 +107,13 @@
         document.body.classList.add('darkTheme')
         darkThemeButton.classList.add('active')
         lightThemeButton.classList.remove('active')
-        // logo.src = 'backend/images/logo/logo.svg'
+        logo.src = 'backend/images/logo/logo.svg'
     }
     else {
         document.body.classList.remove('darkTheme')
         lightThemeButton.classList.add('active')
         darkThemeButton.classList.remove('active')
-        // logo.src = 'backend/images/logo/logo.svg'
+        logo.src = 'backend/images/logo/logo.svg'
     }
 
     darkThemeButton.addEventListener('click', () => {
@@ -121,7 +121,7 @@
         localStorage.setItem('theme', 'dark') // Save theme preference
         darkThemeButton.classList.add('active')
         lightThemeButton.classList.remove('active')
-        // logo.src = 'backend/images/logo/logo.svg'
+        logo.src = 'backend/images/logo/logo.svg'
     })
 
     lightThemeButton.addEventListener('click', () => {
@@ -129,7 +129,7 @@
         localStorage.setItem('theme', 'light') // Save theme preference
         lightThemeButton.classList.add('active')
         darkThemeButton.classList.remove('active')
-        // logo.src = 'backend/images/logo/logo.svg'
+        logo.src = 'backend/images/logo/logo.svg'
     })
 
     // Enabling bootstrap tooltips
