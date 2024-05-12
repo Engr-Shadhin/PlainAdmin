@@ -5,23 +5,13 @@ use App\Http\Controllers\Backend\Settings\DynamicPageController;
 use App\Http\Controllers\Backend\Settings\MailSettingController;
 use App\Http\Controllers\Backend\Settings\ProfileController;
 use App\Http\Controllers\Backend\Settings\SocialMediaController;
+use App\Http\Controllers\Backend\Settings\StripeSettingController;
 use App\Http\Controllers\Backend\Settings\SystemSettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['role:admin'])->group(function () {
     //! This Route is for DashboardController
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-    //!Route for SystemSettingController
-    // Route::controller(SystemSettingController::class)->group(function () {
-    //     Route::get('/system-setting', 'index')->name('system.setting');
-    //     Route::post('/system-setting', 'update')->name('system.update');
-    //     Route::get('/system/mail', 'mailSetting')->name('mailsetting');
-    //     Route::post('/system/mail', 'mailSettingUpdate')->name('mail.setting.update');
-    //     Route::get('/system/profile', 'profileindex')->name('profilesetting');
-    //     Route::get('/system/stripe', 'stripeindex')->name('stripe.index');
-    //     Route::post('/system/stripe', 'stripestore')->name('stripe.store');
-    // });
 
     //!Route for ProfileController
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.setting');
@@ -51,4 +41,8 @@ Route::middleware(['role:admin'])->group(function () {
         Route::get('/dynamic-page/status/{id}', 'status')->name('dynamic_page.status');
         Route::delete('/dynamic-page/destroy/{id}', 'destroy')->name('dynamic_page.destroy');
     });
+
+    //!Route for StripeSettingController
+    Route::get('/stripe-setting', [StripeSettingController::class, 'index'])->name('stripe.index');
+    Route::post('/stripe-setting', [StripeSettingController::class, 'update'])->name('stripe.update');
 });
