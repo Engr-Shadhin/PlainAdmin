@@ -4,8 +4,12 @@
 <link rel="stylesheet" href="{{ asset('backend/css/quill/snow.css') }}" />
 <link rel="stylesheet" href="{{ asset('backend/css/fullcalendar.css') }}" />
 <link rel="stylesheet" href="{{ asset('backend/css/morris.css') }}" />
-<link rel="stylesheet" href="{{ asset('backend/css/datatable.css') }}" />
+{{-- <link rel="stylesheet" href="{{ asset('backend/css/datatable.css') }}" /> --}}
 <link rel="stylesheet" href="{{ asset('backend/css/main.css') }}" />
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
 <style>

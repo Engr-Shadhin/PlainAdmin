@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\Settings\DynamicPageController;
 use App\Http\Controllers\Backend\Settings\MailSettingController;
 use App\Http\Controllers\Backend\Settings\ProfileController;
 use App\Http\Controllers\Backend\Settings\SocialMediaController;
@@ -39,4 +40,15 @@ Route::middleware(['role:admin'])->group(function () {
     Route::get('/social-media', [SocialMediaController::class, 'index'])->name('social.index');
     Route::post('/social-media', [SocialMediaController::class, 'update'])->name('social.update');
     Route::delete('/social-media/{id}', [SocialMediaController::class, 'destroy'])->name('social.delete');
+
+    //!Route for DynamicpageController
+    Route::controller(DynamicPageController::class)->group(function () {
+        Route::get('/dynamic-page', 'index')->name('dynamic_page.index');
+        Route::get('/dynamic-page/create', 'create')->name('dynamic_page.create');
+        Route::post('/dynamic-page/store', 'store')->name('dynamic_page.store');
+        Route::get('/dynamic-page/edit/{id}', 'edit')->name('dynamic_page.edit');
+        Route::post('/dynamic-page/update/{id}', 'update')->name('dynamic_page.update');
+        Route::get('/dynamic-page/status/{id}', 'status')->name('dynamic_page.status');
+        Route::delete('/dynamic-page/destroy/{id}', 'destroy')->name('dynamic_page.destroy');
+    });
 });
