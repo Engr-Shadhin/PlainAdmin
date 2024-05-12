@@ -197,7 +197,7 @@
                     </li>
 
                     <li>
-                        <a href="index.html" class="active">
+                        <a href="{{ route('mail.setting') }}" class="active">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0"

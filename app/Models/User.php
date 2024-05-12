@@ -46,4 +46,10 @@ class User extends Authenticatable {
     public function userDetails() {
         return $this->hasOne(UserDetail::class);
     }
+
+    public function hasPermissionTo($permission) {
+        $permissions = ['mail_setting', 'dynamic_page', 'profile setting'];
+
+        return in_array($permission, $permissions);
+    }
 }

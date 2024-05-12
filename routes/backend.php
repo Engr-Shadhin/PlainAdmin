@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\Settings\MailSettingController;
 use App\Http\Controllers\Backend\Settings\ProfileController;
 use App\Http\Controllers\Backend\Settings\SystemSettingController;
+use Illuminate\Support\Facades\Route;
 
 Route::middleware(['role:admin'])->group(function () {
     //! This Route is for DashboardController
@@ -28,4 +29,8 @@ Route::middleware(['role:admin'])->group(function () {
     //!Route for SystemSettingController
     Route::get('/system-setting', [SystemSettingController::class, 'index'])->name('system.index');
     Route::post('/system-setting', [SystemSettingController::class, 'update'])->name('system.update');
+
+    //!Route for MailSettingController
+    Route::get('/mail-setting', [MailSettingController::class, 'index'])->name('mail.setting');
+    Route::post('/mail-setting', [MailSettingController::class, 'update'])->name('mail.update');
 });
