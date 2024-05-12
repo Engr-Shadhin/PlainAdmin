@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\Settings\DynamicPageController;
+use App\Http\Controllers\Backend\Settings\GoogleAnalyticsController;
 use App\Http\Controllers\Backend\Settings\MailSettingController;
 use App\Http\Controllers\Backend\Settings\ProfileController;
 use App\Http\Controllers\Backend\Settings\SocialMediaController;
@@ -45,4 +46,8 @@ Route::middleware(['role:admin'])->group(function () {
     //!Route for StripeSettingController
     Route::get('/stripe-setting', [StripeSettingController::class, 'index'])->name('stripe.index');
     Route::post('/stripe-setting', [StripeSettingController::class, 'update'])->name('stripe.update');
+
+    //!Route for GoogleAnalyticsController
+    Route::get('/analytics-setting', [GoogleAnalyticsController::class, 'index'])->name('analytics.index');
+    Route::post('/analytics-setting', [GoogleAnalyticsController::class, 'update'])->name('analytics.update');
 });

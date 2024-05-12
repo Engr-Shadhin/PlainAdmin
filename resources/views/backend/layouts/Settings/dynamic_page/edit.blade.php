@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', 'System Settings')
+@section('title', 'Update Dynamic Page')
 
 @push('style')
     <style>
@@ -75,13 +75,9 @@
                             @enderror
                         </div>
 
-                        <div class="row mt-4">
-                            <div class="col-6">
-                                <button type="submit" class="btn btn-primary w-100">Submit</button>
-                            </div>
-                            <div class="col-6">
-                                <a href="{{ route('dashboard') }}" class="btn btn-danger w-100">Cancel</a>
-                            </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn primary-btn">Submit</button>
+                            <a href="{{ route('dashboard') }}" class="btn danger-btn me-2">Cancel</a>
                         </div>
                     </form>
                 </div>

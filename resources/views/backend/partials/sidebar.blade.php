@@ -312,6 +312,30 @@
                             Stripe
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{ route('analytics.index') }}" class="active">
+                            <span class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0"
+                                    y="0" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512"
+                                    xml:space="preserve" class="">
+                                    <g>
+                                        <path
+                                            d="M336 160H176c-8.832 0-16 7.168-16 16v320c0 8.832 7.168 16 16 16h160c8.832 0 16-7.168 16-16V176c0-8.832-7.168-16-16-16z"
+                                            style="" fill="#ffc107" data-original="#ffc107"></path>
+                                        <path
+                                            d="M176 320H16c-8.832 0-16 7.168-16 16v160c0 8.832 7.168 16 16 16h160c8.832 0 16-7.168 16-16V336c0-8.832-7.168-16-16-16z"
+                                            style="" fill="#ffc107" data-original="#ffc107"></path>
+                                        <path
+                                            d="M496 0H336c-8.832 0-16 7.168-16 16v480c0 8.832 7.168 16 16 16h160c8.832 0 16-7.168 16-16V16c0-8.832-7.168-16-16-16z"
+                                            style="" fill="#ffa000" data-original="#ffa000"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                            Google Analytics
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

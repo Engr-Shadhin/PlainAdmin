@@ -1,11 +1,11 @@
 @extends('backend.app')
 
-@section('title', 'Create Dynamic Page')
+@section('title', 'Google Analytics')
 
 @push('style')
     <style>
         .ck-editor__editable[role="textbox"] {
-            min-height: 150px;
+            min-height: 500px;
         }
     </style>
 @endpush
@@ -16,7 +16,7 @@
         <div class="row align-items-center">
             <div class="col-md-6">
                 <div class="title">
-                    <h2>Create New Page</h2>
+                    <h2>Google Analytics</h2>
                 </div>
             </div>
 
@@ -35,7 +35,7 @@
                                 </a>
                             </li>
                             <li><span><i class="lni lni-angle-double-right"></i></span>Settings</li>
-                            <li class="active"><span><i class="lni lni-angle-double-right"></i></span>Dynamic Pages</li>
+                            <li class="active"><span><i class="lni lni-angle-double-right"></i></span>Google Analytics</li>
                         </ol>
                     </nav>
                 </div>
@@ -48,27 +48,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card-style mb-4">
-                    <form method="POST" action="{{ route('dynamic_page.store') }}">
+                    <form method="POST" action="{{ route('analytics.update') }}">
                         @csrf
                         <div class="input-style-1">
-                            <label for="page_title">Title:</label>
-                            <input type="text" placeholder="Enter Title" id="page_title"
-                                class="form-control @error('page_title') is-invalid @enderror" name="page_title"
-                                value="{{ old('page_title') }}" />
-                            @error('page_title')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-
-                        <div class="input-style-1">
-                            <label for="page_content">Content:</label>
-                            <textarea placeholder="Type here..." id="page_content" name="page_content"
-                                class="form-control @error('page_content') is-invalid @enderror">
-                                {{ old('page_content') }}
-                            </textarea>
-                            @error('page_content')
+                            <label for="description">Google Analytics:</label>
+                            <textarea placeholder="Type here..." id="description" name="description"
+                                class="form-control @error('description') is-invalid @enderror">
+                                        {{ $analytics->description ?? '' }}
+                                    </textarea>
+                            @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -90,7 +78,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/41.2.0/classic/ckeditor.js"></script>
     <script>
         ClassicEditor
-            .create(document.querySelector('#page_content'))
+            .create(document.querySelector('#description'))
             .catch(error => {
                 console.error(error);
             });

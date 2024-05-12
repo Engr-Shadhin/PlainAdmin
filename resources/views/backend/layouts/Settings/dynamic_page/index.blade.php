@@ -1,6 +1,6 @@
 @extends('backend.app')
 
-@section('title', 'System Settings')
+@section('title', 'Dynamic Page')
 
 @push('style')
     <link href="https://cdn.datatables.net/v/bs5/dt-2.0.2/datatables.min.css" rel="stylesheet">
