@@ -11,28 +11,29 @@ use App\Http\Controllers\Backend\Settings\SystemSettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['role:admin'])->group(function () {
-    //! This Route is for DashboardController
+    //! Route for DashboardController
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    //!Route for ProfileController
+    //! Route for ProfileController
     Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile.setting');
     Route::post('/update-profile', [ProfileController::class, 'UpdateProfile'])->name('update.profile');
     Route::post('/update-profile-password', [ProfileController::class, 'UpdatePassword'])->name('update.Password');
+    Route::post('/update-profile-picture', [ProfileController::class, 'UpdateProfilePicture'])->name('update.profile.picture');
 
-    //!Route for SystemSettingController
+    //! Route for SystemSettingController
     Route::get('/system-setting', [SystemSettingController::class, 'index'])->name('system.index');
     Route::post('/system-setting', [SystemSettingController::class, 'update'])->name('system.update');
 
-    //!Route for MailSettingController
+    //! Route for MailSettingController
     Route::get('/mail-setting', [MailSettingController::class, 'index'])->name('mail.setting');
     Route::post('/mail-setting', [MailSettingController::class, 'update'])->name('mail.update');
 
-    //!Route for SocialMediaController
+    //! Route for SocialMediaController
     Route::get('/social-media', [SocialMediaController::class, 'index'])->name('social.index');
     Route::post('/social-media', [SocialMediaController::class, 'update'])->name('social.update');
     Route::delete('/social-media/{id}', [SocialMediaController::class, 'destroy'])->name('social.delete');
 
-    //!Route for DynamicpageController
+    //! Route for DynamicpageController
     Route::controller(DynamicPageController::class)->group(function () {
         Route::get('/dynamic-page', 'index')->name('dynamic_page.index');
         Route::get('/dynamic-page/create', 'create')->name('dynamic_page.create');
@@ -43,11 +44,14 @@ Route::middleware(['role:admin'])->group(function () {
         Route::delete('/dynamic-page/destroy/{id}', 'destroy')->name('dynamic_page.destroy');
     });
 
-    //!Route for StripeSettingController
+    //! Route for StripeSettingController
     Route::get('/stripe-setting', [StripeSettingController::class, 'index'])->name('stripe.index');
     Route::post('/stripe-setting', [StripeSettingController::class, 'update'])->name('stripe.update');
 
-    //!Route for GoogleAnalyticsController
+    //! Route for GoogleAnalyticsController
     Route::get('/analytics-setting', [GoogleAnalyticsController::class, 'index'])->name('analytics.index');
     Route::post('/analytics-setting', [GoogleAnalyticsController::class, 'update'])->name('analytics.update');
+
+    //! Route for Calendar
+    Route::view('/calender', 'backend.layouts.Settings.calendar')->name('calendar');
 });

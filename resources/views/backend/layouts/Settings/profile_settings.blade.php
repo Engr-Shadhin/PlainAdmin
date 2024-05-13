@@ -40,23 +40,35 @@
         <div class="col-lg-12">
             <div class="card-style settings-card-1 mb-30">
                 <div class="title mb-30 d-flex justify-content-between align-items-center">
-                    <h6>My Profile</h6>
-                    <button class="border-0 bg-transparent">
-                        <i class="lni lni-pencil-alt"></i>
-                    </button>
+                    <h4>My Profile</h4>
                 </div>
                 <div class="profile-info">
                     <div class="d-flex align-items-center mb-30">
+
                         <div class="profile-image">
-                            <img src="{{ asset('backend/images/profile/profile-1.png') }}" alt="" />
+                            @isset($userDetails)
+                                @if ($userDetails->profile_picture)
+                                    <img id="profile-picture" src="{{ asset($userDetails->profile_picture) }}"
+                                        alt="Profile Picture">
+                                @else
+                                    <img id="profile-picture" src="{{ asset('backend/images/profile/profile-1.png') }}"
+                                        alt="Default Profile Picture">
+                                @endif
+                            @else
+                                <img id="profile-picture" src="{{ asset('backend/images/profile/profile-1.png') }}"
+                                    alt="Default Profile Picture">
+                            @endisset
+
                             <div class="update-image">
-                                <input type="file" />
-                                <label for=""><i class="lni lni-cloud-upload"></i></label>
+                                <input type="file" name="profile_picture" id="profile_picture_input"
+                                    style="display: none;">
+                                <label for="profile_picture_input"><i class="lni lni-cloud-upload"></i></label>
                             </div>
                         </div>
+
                         <div class="profile-meta">
                             <h5 class="text-bold text-dark mb-10">{{ Auth::user()->name }}</h5>
-                            <p class="text-sm text-gray">Web & UI/UX Design</p>
+                            <p class="text-sm text-gray">Admin</p>
                         </div>
                     </div>
 
@@ -154,3 +166,35 @@
         </div>
     </div>
 @endsection
+
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('#profile_picture_input').change(function() {
+                var formData = new FormData();
+                formData.append('profile_picture', $(this)[0].files[0]);
+                formData.append('_token', '{{ csrf_token() }}');
+
+                $.ajax({
+                    url: '{{ route('update.profile.picture') }}',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data) {
+                        if (data.success) {
+                            $('#profile-picture').attr('src', data.image_url);
+                            toastr.success('Profile picture updated successfully.');
+                        } else {
+                            toastr.error(data.message);
+                        }
+                    },
+                    error: function() {
+                        toastr.error(data.message);
+                    }
+                });
+            });
+        });
+    </script>
+@endpush
