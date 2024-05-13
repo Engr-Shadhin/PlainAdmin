@@ -30,7 +30,6 @@
                 The page you are looking for was moved removed.
                 rename or might never existed.
             </p>
-
             <div class="d-flex align-items-center justify-content-center gap-3">
                 <a href="{{ route('dashboard') }}" class="main-btn primary-btn btn-hover">Go Home</a>
                 <a href="#" class="main-btn secondary-btn btn-hover">Contact Us</a>
