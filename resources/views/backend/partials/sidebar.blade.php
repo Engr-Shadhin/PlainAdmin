@@ -1,7 +1,12 @@
+@php
+    $systemSetting = App\Models\SystemSetting::first();
+@endphp
+
 <aside class="sidebar-nav-wrapper">
     <div class="navbar-logo">
         <a href="{{ route('dashboard') }}">
-            <img src="{{ asset('backend/images/logo/logo.svg') }}" alt="logo" />
+            <img class="mb-3" width="140px" height="25px"
+                src="{{ asset($systemSetting->logo ?? 'backend/images/logo/logo.svg') }}" alt="logo" />
         </a>
     </div>
 

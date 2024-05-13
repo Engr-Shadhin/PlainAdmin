@@ -6,7 +6,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
 class Helper {
-    public static function fileUpload(UploadedFile $file, string $folder, string $name): ?string {
+    public static function fileUpload($file, $folder, $name) {
         if (!$file->isValid()) {
             return null;
         }
