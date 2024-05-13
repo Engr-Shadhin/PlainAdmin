@@ -3,10 +3,10 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
-class Handler extends ExceptionHandler
-{
+class Handler extends ExceptionHandler {
     /**
      * A list of exception types with their corresponding custom log levels.
      *
@@ -39,10 +39,16 @@ class Handler extends ExceptionHandler
     /**
      * Register the exception handling callbacks for the application.
      */
-    public function register(): void
-    {
+    public function register(): void {
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    public function render($request, Throwable $exception) {
+        if ($exception instanceof NotFoundHttpException) {
+            return response()->view('backend.layouts.Settings.errors.404', [], 404);
+        }
+        return parent::render($request, $exception);
     }
 }
