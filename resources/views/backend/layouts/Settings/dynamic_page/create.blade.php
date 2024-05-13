@@ -76,8 +76,8 @@
                         </div>
 
                         <div class="col-12">
-                            <button type="submit" class="btn primary-btn">Submit</button>
-                            <a href="{{ route('dashboard') }}" class="btn danger-btn me-2">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <a href="{{ route('dashboard') }}" class="btn btn-danger me-2">Cancel</a>
                         </div>
                     </form>
                 </div>
