@@ -1,5 +1,25 @@
 @php
     $systemSetting = App\Models\SystemSetting::first();
+
+    function isActiveRoute($routeNames, $output = 'active')
+    {
+        foreach ((array) $routeNames as $routeName) {
+            if (Route::currentRouteName() == $routeName) {
+                return $output;
+            }
+        }
+        return null;
+    }
+
+    function areActiveRoutes($routeNames, $output = 'active')
+    {
+        foreach ((array) $routeNames as $routeName) {
+            if (Route::currentRouteName() == $routeName) {
+                return $output;
+            }
+        }
+        return null;
+    }
 @endphp
 
 <aside class="sidebar-nav-wrapper">
@@ -12,9 +32,8 @@
 
     <nav class="sidebar-nav">
         <ul>
-            <li class="nav-item nav-item-has-children">
-                <a href="#0" data-bs-toggle="collapse" data-bs-target="#ddmenu_1" aria-controls="ddmenu_1"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <li class="nav-item {{ isActiveRoute(['dashboard']) }}">
+                <a href="{{ route('dashboard') }}">
                     <span class="icon">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -26,18 +45,9 @@
                     </span>
                     <span class="text">Dashboard</span>
                 </a>
-                <ul id="ddmenu_1" class="collapse show dropdown-nav">
-                    <li>
-                        <a href="index.html" class="active"> eCommerce </a>
-                    </li>
-
-                </ul>
             </li>
 
-
-
-
-            <li class="nav-item">
+            <li class="nav-item {{ isActiveRoute(['calendar']) }}">
                 <a href="{{ route('calendar') }}">
                     <span class="icon">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -48,20 +58,16 @@
                                 d="M18.3333 7.29166H1.66666V15C1.66666 15.9205 2.41285 16.6667 3.33332 16.6667H16.6667C17.5872 16.6667 18.3333 15.9205 18.3333 15V7.29166Z" />
                         </svg>
                     </span>
-                    <span class="text">
-                        Calendar
-                    </span>
+                    <span class="text">Calendar</span>
                 </a>
             </li>
-
 
             <span class="divider">
                 <hr />
             </span>
 
-
-
-            <li class="nav-item nav-item-has-children">
+            <li
+                class="nav-item nav-item-has-children {{ areActiveRoutes(['profile.setting', 'system.index', 'mail.setting', 'social.index', 'dynamic_page.index', 'stripe.index', 'analytics.index'], 'active show') }}">
                 <a href="#0" data-bs-toggle="collapse" data-bs-target="#settings" aria-controls="settings"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon">
@@ -92,9 +98,10 @@
                     </span>
                     <span class="text">Settings</span>
                 </a>
-                <ul id="settings" class="collapse show dropdown-nav">
+                <ul id="settings"
+                    class="collapse dropdown-nav {{ areActiveRoutes(['profile.setting', 'system.index', 'mail.setting', 'social.index', 'dynamic_page.index', 'stripe.index', 'analytics.index'], 'show') }}">
                     <li>
-                        <a href="{{ route('profile.setting') }}" class="active">
+                        <a href="{{ route('profile.setting') }}" class="{{ isActiveRoute(['profile.setting']) }}">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0" y="0"
@@ -151,7 +158,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('system.index') }}" class="active">
+                        <a href="{{ route('system.index') }}" class="{{ isActiveRoute(['system.index']) }}">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0"
@@ -202,7 +209,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('mail.setting') }}" class="active">
+                        <a href="{{ route('mail.setting') }}" class="{{ isActiveRoute(['mail.setting']) }}">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0"
@@ -233,7 +240,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('social.index') }}" class="active">
+                        <a href="{{ route('social.index') }}" class="{{ isActiveRoute(['social.index']) }}">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0"
@@ -260,7 +267,8 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('dynamic_page.index') }}" class="active">
+                        <a href="{{ route('dynamic_page.index') }}"
+                            class="{{ isActiveRoute(['dynamic_page.index']) }}">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0"
@@ -297,7 +305,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('stripe.index') }}" class="active">
+                        <a href="{{ route('stripe.index') }}" class="{{ isActiveRoute(['stripe.index']) }}">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0"
@@ -319,7 +327,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ route('analytics.index') }}" class="active">
+                        <a href="{{ route('analytics.index') }}" class="{{ isActiveRoute(['analytics.index']) }}">
                             <span class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
                                     xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" x="0"
